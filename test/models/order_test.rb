@@ -1,7 +1,8 @@
 require 'test_helper'
 
-class OrderTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+class Ordertest < ActiveSupport::TestCase
+  test "should be good" do
+    a = Order.new
+    assert a.valid?
+  end
 end
