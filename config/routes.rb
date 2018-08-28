@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
 
-  get 'user/profil'
-
+  get '/carts/show', to: 'carts#show', as: 'show_cart'
+  get 'user/profil', to: 'user#profil'
   root 'items#index'
   get 'items/show/:id', to: 'items#show'
 
