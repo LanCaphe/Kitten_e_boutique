@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'user/profil'
 #  devise_for :users
 
 #Mode simple
