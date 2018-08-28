@@ -17,4 +17,9 @@ class CartTest < ActiveSupport::TestCase
     cart = Cart.new(user_id: User.all.sample.id)
     assert cart.valid?
   end
+
+  test 'should know if cart is not valid' do
+    cart = Cart.new
+    refute cart.valid?
+  end
 end
