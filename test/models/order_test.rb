@@ -16,4 +16,9 @@ class Ordertest < ActiveSupport::TestCase
       order = Order.new(user_id: User.all.sample.id)
       assert order.valid?
     end
+
+    test 'should know if order is not valid' do
+      order = Order.new
+      refute order.valid?
+    end
 end

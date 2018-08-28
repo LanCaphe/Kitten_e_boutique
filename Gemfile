@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+#Payment
+gem 'stripe'
 # Authentification
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -10,6 +12,8 @@ gem 'rails', '~> 5.2.1'
 # Use sqlite3 as the database for Active Record
 group :development, :test do
   gem 'sqlite3'
+#Protect keys
+  gem 'dotenv-rails'
 end
 
 group :production do
@@ -70,3 +74,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :development, :test do
   gem 'rspec-rails', '~> 3.7'
 end
+
+#Faker for create random items, users ect...
+gem 'faker', '~> 1.6', '>= 1.6.6'
