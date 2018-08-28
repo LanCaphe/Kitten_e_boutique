@@ -74,3 +74,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :development, :test do
   gem 'rspec-rails', '~> 3.7'
 end
+
+#Faker for create random items, users ect...
+gem 'faker', '~> 1.6', '>= 1.6.6'
