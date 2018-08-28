@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'carts/show', to: 'carts#show', as: 'show_cart'
+  get '/carts/show', to: 'carts#show', as: 'show_cart'
   root 'items#index'
   get 'items/show', to: 'items#show'
 #  devise_for :users
