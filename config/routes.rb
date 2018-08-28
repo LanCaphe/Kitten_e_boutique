@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
+
+  get 'user/profil'
+
   root 'items#index'
   get 'items/show/:id', to: 'items#show'
+
 #  devise_for :users
 
 #Mode simple
