@@ -5,15 +5,16 @@
 <table>
 <thead>
 <tr>
-  <th>Name</th>
+  <th>Title</th>
   <th>Price</th>
 </tr>
 </thead>
 <tbody>
-<%= @cart.each do |item| %>
+<% @cart.each do |item| %>
   <tr>
-    <td>item.title</td>
-    <td>item.price</td>
+    <td><%= item["title"] %></td>
+    <td><%= item["price"] %></td>
+    <td><%= link_to 'delete item', delete_item_url(item["id"]), remote: true %></td>
   </tr>
 <% end %>
 </tbody>
