@@ -1,7 +1,22 @@
 <div>
-<ul>
-  <li><%= link_to 'login', "/login" %></li>
-  <li><%= link_to 'sign up', "/register" %></li>
-  <li><%= link_to 'cart', show_cart_url %></li>
-</ul>
+  <ul>
+    <% if user_signed_in? %>
+      <li>
+        <%= link_to 'profile', '/' %>
+      </li>
+      <li>
+        <%= link_to 'logout', '/logout', method: :delete %>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to 'login', "/login" %>
+      </li>
+      <li>
+        <%= link_to 'sign up', "/register" %>
+      </li>
+      <li>
+        <%= link_to 'cart', show_cart_url %>
+      </li>
+    <% end %>
+  </ul>
 </div>
