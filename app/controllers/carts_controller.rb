@@ -36,7 +36,7 @@ class CartsController < ApplicationController
     end
   end
 
-  def create
+  def valid
     # Amount in cents
     @amout = 500
 
@@ -54,6 +54,6 @@ class CartsController < ApplicationController
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
-    redirect_to new_charge_path
+    redirect_to valid_cart_path
   end
 end
