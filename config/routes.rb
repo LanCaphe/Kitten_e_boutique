@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 
   get '/carts/show', to: 'carts#show', as: 'show_cart'
+  post '/carts/show', to: 'carts#create', as: 'create_cart'
   get 'user/profil', to: 'user#profil'
   root 'items#index'
   get 'items/show/:id', to: 'items#show'
