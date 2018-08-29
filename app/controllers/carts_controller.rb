@@ -31,15 +31,17 @@ class CartsController < ApplicationController
         session[:cart].push(Item.find(params[:id]))
       end
     end
-    # flash[:success] = "Item successfully added to your cart."
+    flash[:success] = "Item successfully added to your cart."
+    redirect_to root_path
     # lets make an ajax print inthe header
   end
 
   def delete_item
     if user_signed_in?
       cart = current_user.cart
-      cart.items.destroy(params[:id])
+      cart.items.delete(params[:id])
       cart.save
+      # work but doesnt redirect?? should do it in js
     else
       # doesnt work yet
       p "HERE"
@@ -50,6 +52,8 @@ class CartsController < ApplicationController
       p session[:cart].find(Item.find(params[:id]))
       p "THERE"
     end
+    flash[:success] = "Item removed from your cart"
+    redirect_to show_cart_url
   end
 
   def valid
