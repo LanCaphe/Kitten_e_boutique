@@ -1,7 +1,7 @@
 <h1>Carts#show</h1>
 <p>Find me in app/views/carts/show.html.erb</p>
 
-<% if @cart.length >= 1 %>
+<% if @cart %>
 <table>
 <thead>
 <tr>
@@ -11,7 +11,7 @@
 </thead>
 <tbody>
 <% @cart.each do |item| %>
-<% @somme_items = @somme_items + item["price"].to_f %>
+<% @som_items = @som_items + item["price"].to_f %>
   <tr>
     <td><%= item["title"] %></td>
     <td><%= item["price"] %></td>
@@ -32,14 +32,14 @@
         </div>
       <% end %>
       <label class="amount">
-        <span>Amount: $<%= @somme_items %></span>
+        <span>Amount: $<%= @som_items %></span>
       </label>
     </article>
 
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key="<%= Rails.application.credentials.stripe[:access_key_id] %>"
             data-description="A month's subscription"
-            data-amount="<%= @somme_items * 100%>"
+            data-amount="<%= @som_items * 100%>"
             data-locale="auto"></script>
   <% end %>
 
