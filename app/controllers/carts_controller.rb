@@ -31,7 +31,7 @@ class CartsController < ApplicationController
         session[:cart].push(Item.find(params[:id]))
       end
     end
-    flash[:success] = "Item successfully added to your cart."
+    flash[:success] = "Item #{Item.find(params[:id]).title} successfully added to your cart."
     redirect_to root_path
     # lets make an ajax print inthe header
   end
@@ -43,14 +43,9 @@ class CartsController < ApplicationController
       cart.save
       # work but doesnt redirect?? should do it in js
     else
-      # doesnt work yet
-      p "HERE"
-      session[:cart].delete(Item.find(params[:id]))
-      session.save
-      p "DELETED?"
-      p session[:cart]
-      p session[:cart].find(Item.find(params[:id]))
-      p "THERE"
+      # not the prettiest, carefull with types in select
+      # session[:cart] = session[:cart].select{|item| item["id"] != params[:id].to_i}
+      session[:cart].select!{|item| item["id"] != params[:id].to_i}
     end
     flash[:success] = "Item removed from your cart"
     redirect_to show_cart_url
