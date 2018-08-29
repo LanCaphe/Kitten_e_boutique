@@ -7,5 +7,5 @@
       <td><%= @item.description %></td>
       <td><%= @item.price %></td>
       <td><%= image_tag @item.image_url %></td>
-      <td><%= link_to 'Add to cart'%></td>
+      <td><%= link_to 'Add to cart', add_item_url(@item.id), remote: true %></td>
 </tbody>

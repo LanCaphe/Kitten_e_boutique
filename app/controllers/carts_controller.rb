@@ -13,7 +13,16 @@ class CartsController < ApplicationController
       cart.items.push(Item.find(params[:id]))
       cart.save
     else
-      session[:cart].push(Item.find(params[:id]))
+      if session[:cart]
+        session[:cart].push(Item.find(params[:id]))
+      else
+        session[:cart] = []
+        session[:cart].push(Item.find(params[:id]))
+      end
     end
+    flash[:success] = "Item successfully added to your cart."
+  end
+
+  def delete_item
   end
 end

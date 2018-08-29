@@ -5,15 +5,15 @@
 <table>
 <thead>
 <tr>
-  <th>Name</th>
+  <th>Title</th>
   <th>Price</th>
 </tr>
 </thead>
 <tbody>
-<%= @cart.each do |item| %>
+<% @cart.each do |item| %>
   <tr>
-    <td>item.title</td>
-    <td>item.price</td>
+    <td><%= item["title"] %></td>
+    <td><%= item["price"] %></td>
   </tr>
 <% end %>
 </tbody>
