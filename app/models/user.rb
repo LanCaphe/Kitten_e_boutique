@@ -5,9 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :username, presence: true, length: {minimum: 3, maximum: 10}
 
-  has_one :cart
   has_many :orders
-  has_many :items, :through => :cart
+  # has_many :items, :through => :cart
   validates_confirmation_of :password
 
 end
