@@ -5,7 +5,7 @@
 <table>
 <thead>
 <tr>
-  <th>Name</th>
+  <th>Title</th>
   <th>Price</th>
 </tr>
 </thead>
@@ -13,8 +13,9 @@
 <%= @cart.each do |item| %>
 <% @somme_items = @somme_items + item.price %>
   <tr>
-    <td>item.title</td>
-    <td>item.price</td>
+    <td><%= item["title"] %></td>
+    <td><%= item["price"] %></td>
+    <td><%= link_to 'delete item', delete_item_url(item["id"]), remote: true %></td>
   </tr>
 <% end %>
 </tbody>
