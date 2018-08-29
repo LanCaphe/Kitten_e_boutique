@@ -44,6 +44,7 @@ class CartsController < ApplicationController
       # work but doesnt redirect?? should do it in js
     else
       # not the prettiest, carefull with types in select
+      # also it removes all those with the same id
       # session[:cart] = session[:cart].select{|item| item["id"] != params[:id].to_i}
       session[:cart].select!{|item| item["id"] != params[:id].to_i}
     end
