@@ -21,24 +21,32 @@
 </tbody>
 </table>
 
-<%= form_tag valid_cart_path do %>
-  <article>
-    <% if flash[:error].present? %>
-      <div id="error_explanation">
-        <p><%= flash[:error] %></p>
-      </div>
-    <% end %>
-    <label class="amount">
-      <span>Amount: $<%= @somme_items %></span>
-    </label>
-  </article>
+<% if user_signed_in? %>
 
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.application.credentials.stripe[:access_key_id] %>"
-          data-description="A month's subscription"
-          data-amount="<%= @somme_items * 100%>"
-          data-locale="auto"></script>
-<% end %>
+  <%= form_tag valid_cart_path do %>
+    <article>
+      <% if flash[:error].present? %>
+        <div id="error_explanation">
+          <p><%= flash[:error] %></p>
+        </div>
+      <% end %>
+      <label class="amount">
+        <span>Amount: $<%= @somme_items %></span>
+      </label>
+    </article>
+
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.application.credentials.stripe[:access_key_id] %>"
+            data-description="A month's subscription"
+            data-amount="<%= @somme_items * 100%>"
+            data-locale="auto"></script>
+  <% end %>
+
+  <% else %>
+    <p>
+      <%= link_to 'Please, be login for pay', new_user_session_path %>
+    </p>
+  <% end %>
 
 <% else %>
 Votre panier est vide

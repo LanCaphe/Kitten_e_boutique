@@ -2,7 +2,7 @@ class CartsController < ApplicationController
   def show
     if user_signed_in?
       if current_user.cart
-        @cart = current_user.cart.items 
+        @cart = current_user.cart.items
       else
         @cart = []
       end
