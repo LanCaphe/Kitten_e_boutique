@@ -11,6 +11,14 @@ end
   password: Faker::Internet.password)
 end
 
+# create Tibo user
+User.create(
+  username: "tibo",
+  email: "tibo@lol.com",
+  password: "qwerty"
+)
+
+
 #create 20 orders
 # 20.times do |index|
 #   a = rand(1..20)
