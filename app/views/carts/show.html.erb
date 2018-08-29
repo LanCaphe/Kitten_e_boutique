@@ -14,6 +14,7 @@
   <tr>
     <td><%= item["title"] %></td>
     <td><%= item["price"] %></td>
+    <td><%= link_to 'delete item', delete_item_url(item["id"]), remote: true %></td>
   </tr>
 <% end %>
 </tbody>

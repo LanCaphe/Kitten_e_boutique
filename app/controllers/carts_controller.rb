@@ -24,5 +24,12 @@ class CartsController < ApplicationController
   end
 
   def delete_item
+    if user_signed_in?
+      cart = current_user.cart
+      cart.items.destroy(params[:id])
+      cart.save
+    else
+      p "haha"
+    end
   end
 end
