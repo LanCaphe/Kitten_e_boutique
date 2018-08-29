@@ -5,6 +5,9 @@ class CartsController < ApplicationController
     else
       @cart = session[:cart]
     end
+
+    @somme_items = 0
+
   end
 
   def add_item
@@ -31,5 +34,26 @@ class CartsController < ApplicationController
     else
       p "haha"
     end
+  end
+
+  def valid
+    # Amount in cents
+    @amout = 500
+
+    customer = Stripe::Customer.create(
+      :email => params[:stripeEmail],
+      :source  => params[:stripeToken]
+    )
+
+    charge = Stripe::Charge.create(
+      :customer    => customer.id,
+      :amount      => @amout,
+      :description => 'Rails Stripe customer',
+      :currency    => 'usd'
+    )
+
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to valid_cart_path
   end
 end
