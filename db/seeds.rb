@@ -2,6 +2,12 @@
 
 require 'faker'
 
+Item.destroy_all
+User.destroy_all
+Cart.destroy_all
+Order.destroy_all
+
+
 # create 20 items with Faker
 20.times do |_index|
   Item.create(
@@ -25,13 +31,13 @@ end
   cart = Cart.create(
     user_id: User.all.sample.id
   )
+  cart.items.push(Item.all.sample(4))
 end
 
 # create 20 orders
 20.times do |_index|
   Order.create(
     user_id: User.all.sample.id,
-    item_id: Item.all.sample.id
   )
 end
 
