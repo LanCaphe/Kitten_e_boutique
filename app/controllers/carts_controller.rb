@@ -55,6 +55,8 @@ class CartsController < ApplicationController
   def valid
     # Amount in cents
     @amout = 500
+    @cart = current_user.cart.items
+
 
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
@@ -69,6 +71,8 @@ class CartsController < ApplicationController
     )
 
     OrderMailer.with(user: current_user).order_email.deliver_now
+    @cart.destroy_all
+
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
