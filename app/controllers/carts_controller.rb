@@ -10,7 +10,7 @@ class CartsController < ApplicationController
       @cart = session[:cart]
     end
 
-    @som_items = 0
+    @sum_items = 0
 
   end
 
