@@ -15,6 +15,7 @@ end
     email:Faker::Internet.email,
     password: Faker::Internet.password)
 end
+
 #create 5 carts
 5.times do |index|
   Cart.create(
@@ -28,3 +29,11 @@ end
     user_id: User.all.sample.id,
     item_id: Item.all.sample.id)
 end
+
+# create Tibo user
+User.create(
+  username: "tibo",
+  email: "tibo@lol.com",
+  password: "qwerty"
+)
+

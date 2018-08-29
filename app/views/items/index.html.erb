@@ -1,0 +1,15 @@
+<section class = "items-wrapper">
+    <div class = "container">
+        <h2>Une liste de nos marchandises, achetez c'est pas cher</h2>
+        <ul class="items__list">
+            <% @items.each do |item| %>
+                <li>
+                    <%= item.title %><br/>
+                    <%= item.description %><br/>
+                    <%= item.price %><br/>
+                    <%= image_tag item.image_url %><br/>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+</section>

@@ -1,8 +1,24 @@
 require 'test_helper'
 
 class Ordertest < ActiveSupport::TestCase
-  test "should know if order is valid" do
-    order = Order.new
-    assert order.valid?
-  end
+    def setup
+      User.destroy_all
+      @user = User.new(
+        username: 'tata',
+        email: 'tata@lol.com',
+        password: 'qwerty',
+        password_confirmation: 'qwerty'
+      )
+      @user.save
+    end
+
+    test "should know if order is valid" do
+      order = Order.new(user_id: User.all.sample.id)
+      assert order.valid?
+    end
+
+    test 'should know if order is not valid' do
+      order = Order.new
+      refute order.valid?
+    end
 end

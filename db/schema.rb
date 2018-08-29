@@ -13,10 +13,12 @@
 ActiveRecord::Schema.define(version: 2018_08_29_100054) do
 
   create_table "carts", force: :cascade do |t|
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "user_id"
     t.string "item_id"
+
   end
 
   create_table "items", force: :cascade do |t|

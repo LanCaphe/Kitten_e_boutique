@@ -8,4 +8,6 @@ class User < ApplicationRecord
   has_one :cart
   has_many :orders
   has_many :items, :through => :cart
+  validates_confirmation_of :password
+
 end
