@@ -36,9 +36,10 @@ end
 
 # create 20 orders
 20.times do |_index|
-  Order.create(
+  order = Order.create(
     user_id: User.all.sample.id,
   )
+  order.items.push(Item.all.sample(5))
 end
 
 # create Tibo user
