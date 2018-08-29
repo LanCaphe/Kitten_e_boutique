@@ -68,7 +68,7 @@ class CartsController < ApplicationController
       :currency    => 'usd'
     )
 
-    OrderMailer.with(user: @user).order_email.deliver_now
+    OrderMailer.with(user: current_user).order_email.deliver_now
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
