@@ -8,6 +8,7 @@
                     <%= item.description %><br/>
                     <%= item.price %><br/>
                     <%= image_tag item.image_url %><br/>
+                    <%= link_to 'add item to cart', add_item_url(item.id) %>
                     <%= link_to 'see item', '/items/show/' + item.id.to_s %>
                 </li>
             <% end %>
