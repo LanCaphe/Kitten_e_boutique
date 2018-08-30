@@ -64,9 +64,17 @@ end
 end
 
 # create Tibo user
-User.create(
+tibo = User.create(
   username: "tibo",
   email: "tibo@lol.com",
   password: "qwerty",
   admin: true
 )
+
+# create some orders for Tibo
+2.times do |_index|
+  order = Order.create(
+    user_id: tibo.id,
+  )
+  order.items.push(Item.all.sample(5)) 
+end
