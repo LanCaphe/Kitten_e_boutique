@@ -7,7 +7,7 @@ class CartsController < ApplicationController
         @cart = []
       end
     else
-      @cart = session[:cart]
+      @cart = session[:cart] || []
     end
 
     @sum_items = 0
