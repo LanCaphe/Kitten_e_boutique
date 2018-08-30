@@ -4,7 +4,7 @@ RSpec.describe Item, type: :model do
  item=Item.new
     it "is not valid without a title" do
       expect(item).to_not be_valid
-      end
+    end
 
     it "is not valid without a description" do
       item.title = "bob"
