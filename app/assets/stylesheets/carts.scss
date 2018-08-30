@@ -443,3 +443,21 @@ a.remove:hover {
     text-align: center;
   }
 }
+
+//css view valid
+
+.contain {
+  display: table;
+  height: 250px;
+  overflow: hidden;
+  background-color: #6A24FA
+}
+
+.center-align {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.margin-top  {
+  margin-top: 20px;
+}
