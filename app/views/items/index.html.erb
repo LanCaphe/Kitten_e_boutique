@@ -24,30 +24,22 @@
         </div>
     </div>
 </div>
-<div class="row">
-    <% @items.each do |item| %>
-    <div class="col-12 col-sm-6 col-md-4">
-        <div class="items__card">
-            <div class="shop__image">
-                <%= image_tag item.image_url %><br />
-                <span class="item__title"><strong>
-                        <%= item.title %></strong></span>
-                <span class="item__desc">
-                    <%= item.description %></span>
-                <span class="item__price">
-                    <%= item.price %>$</span>
-                <span>
-                    <%= item.category.name %></span>
-            </div>
-            <ul class="list-inline pagination-center" style="float-none">
-                <li class="list-inline-item">
-                    <%= link_to 'See item', '/items/show/' + item.id.to_s, :class => "shop__btn shop__btn__show" %>
-                </li>
-                <li class="list-inline-item">
-                    <%= link_to 'Add to cart', add_item_url(item.id), :class => "shop__btn shop__btn__cart" %>
-                </li>
-            </ul>
+        <div class="row">
+            <% @items.each do |item| %>
+                <div class="col-12 col-sm-6 col-md-4">
+                    <div class="items__card">
+                        <div class="shop__image">
+                            <div class="item__desc__over">
+                                <span class="item__desc"><%= item.title %></span>
+                            </div>
+                            <%= image_tag item.image_url %><br/>
+                            <span class="item__price"><%= item.price %>$</span>
+                        </div>
+                        <ul class="list-inline pagination-center" style="float-none">
+                            <li class="list-inline-item"><%= link_to 'See item', '/items/show/' + item.id.to_s, :class => "shop__btn shop__btn__show" %></li>
+                            <li class="list-inline-item"><%= link_to 'Add to cart', add_item_url(item.id), :class => "shop__btn shop__btn__cart" %></li>
+                        </ul>
+                    </div>
+                </div>
+            <% end %>
         </div>
-    </div>
-    <% end %>
-</div>
