@@ -80,6 +80,7 @@ class CartsController < ApplicationController
     # Amount in cents
     @amout = 500
     @cart = current_user.cart.items
+    @user = current_user
 
 
     customer = Stripe::Customer.create(
@@ -99,6 +100,7 @@ class CartsController < ApplicationController
     )
     order.items.push(@cart)
 
+    OrderMailer.with(user: @user).order_email.deliver_now
 
     @cart.destroy_all
 
