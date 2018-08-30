@@ -1,18 +1,21 @@
 <h1>User#profil</h1>
 <p>Find me in app/views/user/profil.html.erb</p>
+<br>
 
+<h1>Hello <%= current_user.username %> here are your previous orders</h1>
   <% @orders.each do |order| %>
+  <% order_price = 0%>
+  <h3>Order  #<%= order.id %> created on the <%= order.created_at %></h3>
   <tr>
       <ul>
         <% order.items.each do |item| %>
-          <li> <% item.title %> </li>
+          <% order_price += item.price %>
+          <li> <%= item.title %> </li>
         <% end %>
       </ul>
   </tr>
+  <p>Total price: $<%= order_price %></p>
+  <br>
   <% end %>
 
-<% @orders.each do |order| %>
-  <p>
-    <%= order %>
-  </p>
-<% end %>
+<%= link_to 'Click here to modify your info', edit_user_registration_path %>

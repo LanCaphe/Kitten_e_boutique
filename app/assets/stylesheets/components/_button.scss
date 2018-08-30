@@ -1,0 +1,36 @@
+@import '../variables/*';
+
+.shop__btn {
+    display: inline-block;
+    width: 115px;
+    height: 45px;
+    line-height: 41px;
+    text-align: center;
+    border-radius: 5px;
+    transition: all 0.1s ease-in;
+    margin-bottom: 10px
+}
+
+.shop__btn__cart {
+    background-color: $blue;
+    color: white;
+    border: 2px solid $blue;
+}
+
+.shop__btn__cart:hover {
+    color: white;
+    background-color: $dark-blue;
+    border: 2px solid $dark-blue
+}
+
+
+.shop__btn__show {
+    border: 2px solid $blue;
+    background-color: white;
+    color: $blue
+}
+
+.shop__btn__show:hover {
+    border: 2px solid $dark-blue;
+    color: $dark-blue
+}
