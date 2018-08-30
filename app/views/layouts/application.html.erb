@@ -17,6 +17,10 @@
   <%- flash.each do |name, msg| -%>
     <%= content_tag :div, msg, :class => "alert alert-success" if msg.is_a?(String) %>
   <%- end -%>
-    <%= yield %>
+  <section class = "items_index__wrapper">
+    <div class="container">
+      <%= yield %>
+    </div>
+  </section>
   </body>
 </html>
