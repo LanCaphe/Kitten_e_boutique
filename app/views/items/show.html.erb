@@ -1,8 +1,11 @@
-<tbody>
-      <td><%= @item.title %></td>
-      <td><%= @item.description %></td>
-      <td><%= @item.price %></td>
-      <td><%= image_tag @item.image_url %></td>
-      <td><%= link_to 'Add to cart', add_item_url(@item.id), :class => "shop__btn shop__btn__cart" %></td>
-      <td><%# link_to 'Add to cart', add_item_url(@item.id), remote: true %></td>
-</tbody>
+<br>
+    <div class=center-block style=float:none;></div>
+        <tbody>
+              <h1> <%= @item.title %> </h1>
+              <h5> <%= @item.description %> </h5>
+              <h3> Price: <%= @item.price %>$ </h3>
+              <p> <%= image_tag @item.image_url %> </p>
+              <p> <%= link_to 'Add to cart', add_item_url(@item.id), :class => "shop__btn shop__btn__cart" %> </p>
+              <%# link_to 'Add to cart', add_item_url(@item.id), remote: true %>
+        </tbody>
+     </div>
