@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
+#
+  namespace :admin do
+      resources :users
+      resources :carts
+      resources :items
+      resources :orders
 
+      root to: "orders#index"
+    end
 
   get '/carts/show', to: 'carts#show', as: 'show_cart'
   post '/carts/show', to: 'carts#valid', as: 'valid_cart'
@@ -10,8 +18,14 @@ Rails.application.routes.draw do
   get 'items/show/:id', to: 'items#show'
 
 #  devise_for :users
+  # post '/login', to: 'session/sessions#create'
 
 #Mode simple
-    devise_for :users, :path => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
+    
+    # devise_for :users, :path => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  devise_for :users, controllers: {
+        sessions: 'session/sessions'
+      }
 end

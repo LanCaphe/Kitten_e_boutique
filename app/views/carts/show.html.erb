@@ -1,45 +1,77 @@
 <h1>Carts#show</h1>
 <p>Find me in app/views/carts/show.html.erb</p>
 
-<% if @cart %>
-<table>
-<thead>
-<tr>
-  <th>Title</th>
-  <th>Price</th>
-</tr>
-</thead>
-<tbody>
-<%= @cart.each do |item| %>
-<% @somme_items = @somme_items + item.price %>
-  <tr>
-    <td><%= item["title"] %></td>
-    <td><%= item["price"] %></td>
-    <td><%= link_to 'delete item', delete_item_url(item["id"]), remote: true %></td>
-  </tr>
-<% end %>
-</tbody>
-</table>
 
-<%= form_tag valid_cart_path do %>
-  <article>
-    <% if flash[:error].present? %>
-      <div id="error_explanation">
-        <p><%= flash[:error] %></p>
-      </div>
+<div class="wrap cf">
+  <div class="heading cf">
+    <h1>My Cart</h1>
+    <a href="/" class="continue">Continue Shopping</a>
+  </div>
+<% if @cart.length > 0 %>
+  <div class="cart">
+    <ul class="cartWrap">
+    <% @cart.each do |item| %>
+      <li class="items odd">
+
+        <div class="infoWrap">
+          <div class="cartSection">
+            <%= image_tag item[:image_url], class: "itemImg"%>
+            <p class="itemNumber">#<%=item[:id]%></p>
+            <h3><%= item[:title] %></h3>
+
+              <p> <%= item[:qty] %> x $<%= item[:price] %></p>
+
+            <p class="stockStatus"> In Stock</p>
+          </div>
+
+          <div class="prodTotal cartSection">
+            <p>$<%= item[:price] * item[:qty] %></p>
+          </div>
+          <div class="cartSection removeWrap">
+            <%= link_to 'x', delete_item_url(item[:id]), class: 'remove' %>
+            <%# link_to 'delete item', delete_item_url(item["id"]), remote: true %>
+          </div>
+        </div>
+      </li>
     <% end %>
-    <label class="amount">
-      <span>Amount: $<%= @somme_items %></span>
-    </label>
-  </article>
+    </ul>
+  </div>
 
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="A month's subscription"
-          data-amount="<%= @somme_items * 100%>"
-          data-locale="auto"></script>
-<% end %>
+
+
+<div class="subtotal cf">
+    <ul>
+      <li class="totalRow final"><span class="label">Total</span><span class="value">$<%=@sum_items%></span></li>
+<% if user_signed_in? %>
+ <li class="totalRow">
+  <%= form_tag valid_cart_path do %>
+    <article>
+      <% if flash[:error].present? %>
+        <div id="error_explanation">
+          <p><%= flash[:error] %></p>
+        </div>
+      <% end %>
+    </article>
+
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.application.credentials.stripe[:access_key_id] %>"
+            data-description="A month's subscription"
+            data-amount="<%= @sum_items * 100%>"
+            data-locale="auto"></script>
+  <% end %>
+  </li>
+
+  <% else %>
+      <li class="totalRow">
+      <%= link_to 'Please login to checkout', new_user_session_path, class: 'btn continue' %>
+      </li>
+  <% end %>
 
 <% else %>
 Votre panier est vide
 <% end %>
+
+    </ul>
+  </div>
+</div>
+
