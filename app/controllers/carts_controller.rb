@@ -70,7 +70,6 @@ class CartsController < ApplicationController
       :currency    => 'usd'
     )
 
-    OrderMailer.with(user: current_user).order_email.deliver_now
     @cart.destroy_all
 
 
