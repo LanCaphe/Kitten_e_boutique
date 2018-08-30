@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
+#
+  namespace :admin do
+      resources :users
+      resources :carts
+      resources :items
+      resources :orders
 
+      root to: "orders#index"
+    end
 
   get '/carts/show', to: 'carts#show', as: 'show_cart'
   get 'carts/add/:id', to: 'carts#add_item', as: 'add_item'
