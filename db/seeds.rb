@@ -6,6 +6,8 @@ Item.destroy_all
 User.destroy_all
 Cart.destroy_all
 Order.destroy_all
+Category.destroy_all
+
 @img = [
   "https://i.goopics.net/Dvpx2.jpg",
   "https://i.goopics.net/qZWDa.jpg",
@@ -29,13 +31,22 @@ Order.destroy_all
   "https://i.goopics.net/94pEj.jpg"
 ]
 
+# create a few categories
+categories = ["cute", "kawai", "love", "tender"]
+categories.each do |category|
+  Category.create(
+    name: category
+  )
+end
+
 # create 20 items with Faker
 20.times do |_index|
   Item.create(
     title: Faker::HarryPotter.character,
     description: Faker::HarryPotter.quote,
     price: Faker::Number.decimal(2),
-    image_url: @img.sample
+    image_url: @img.sample,
+    category: Category.all.sample
   )
 end
 # create 10 users

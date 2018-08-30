@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get 'user/profil', to: 'user#profil'
   root 'items#index'
   get 'items/show/:id', to: 'items#show'
-
+  get '/:category', to: 'items#index', as: 'index_category'
 #  devise_for :users
   # post '/login', to: 'session/sessions#create'
 

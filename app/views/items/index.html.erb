@@ -1,6 +1,29 @@
 <div class="pickup-line">
     <h2>Checkout our best kittens</h2>
 </div>
+<div>
+    <div class="row">
+        <div class="col-12 col-sm-6 col-md-4">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="<%= !params[:category]? " btn btn-outline-primary active" : "btn btn-outline-primary" %>">
+                    <%= link_to root_path do %>
+                    <input type="radio" name="options" autocomplete="off">
+                    All
+                    <% end %>
+                </label>
+                <% Category.all.each do |category| %>
+                <label class="<%= category.name == params[:category]? " btn btn-outline-primary active" :
+                    "btn btn-outline-primary" %>">
+                    <%= link_to index_category_url(category.name) do %>
+                    <input type="radio" name="options" autocomplete="off">
+                    <%= category.name %>
+                    <% end %>
+                </label>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="row">
     <% @items.each do |item| %>
     <div class="col-12 col-sm-6 col-md-4">
@@ -13,6 +36,8 @@
                     <%= item.description %></span>
                 <span class="item__price">
                     <%= item.price %>$</span>
+                <span>
+                    <%= item.category.name %></span>
             </div>
             <ul class="list-inline pagination-center" style="float-none">
                 <li class="list-inline-item">
