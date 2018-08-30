@@ -1,3 +1,6 @@
+@import "variables/*";
+
+
 header.smaller {
 	height: 75px;
 }
@@ -6,8 +9,10 @@ header.smaller h1#logo {
 	width: 150px;
 	height: 75px;
 	line-height: 55px;
-	font-size: 55px;
+	font-size: 65px;
 	margin: 0;
+	font-family: 'Indie Flower', cursive;
+	font-weight: 600;
 }
 
 header.smaller nav a {
@@ -15,7 +20,6 @@ header.smaller nav a {
 }
 
 nav a {
-	color: #fcfcfc;
   font-weight: 300;
   margin-right: 10px;
 }
@@ -29,7 +33,7 @@ header {
 	left: 0;
 	z-index: 999;
   border-bottom:solid 0.5em #f4f4f4;
-	background-color: #394e63;
+	background-color: $dark-grey;
   transition: height 0.3s;
 }
 
@@ -37,22 +41,22 @@ header a {
   text-decoration: none;
 }
 header h1 a {
-  color: #394e63;
+  color: #inherit;
 }
 header h1 a:visited {
-  color: #394e63;
+  color: inherit;
 }
 
 header h1#logo {
 	display: inline-block;
 	line-height:3em;
-   margin: 0;
-   padding:0 1em;
-   background-color:#82ca9c;
+  margin: 0;
+  padding:0 1em;
+  background-color:$blue;
 	float: left;
-	font-family: "Open Sans", sans-serif;
+	font-family: 'Indie Flower', cursive;
 	font-size: 60px;
-	color: #fcfcfc;
+	color: white;
   /* text-shadow: 0.1em 0.03em #C0392B; */
 	font-weight: 400;
 	-webkit-transition: all 0.3s;
@@ -81,7 +85,7 @@ header nav a {
 }
 
 header nav a:hover {
-	color: #fd5559;
+	color: $blue;
 }
 
 header.smaller {
@@ -110,7 +114,7 @@ header.smaller nav a {
 		display: block;
 		float: none;
 		margin: 0 auto;
-		height: 100px;     
+		height: 100px;
 		line-height: 80px;
 		text-align: center;
 	}
@@ -153,4 +157,3 @@ header.smaller nav a {
 		width: 100%;
 	}
 }
-
