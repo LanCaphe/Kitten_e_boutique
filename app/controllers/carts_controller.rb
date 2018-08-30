@@ -2,7 +2,7 @@ class CartsController < ApplicationController
   def show
     if user_signed_in?
       if current_user.cart
-        @cart = current_user.cart.items 
+        @cart = current_user.cart.items
       else
         @cart = []
       end
@@ -10,7 +10,7 @@ class CartsController < ApplicationController
       @cart = session[:cart]
     end
 
-    @somme_items = 0
+    @sum_items = 0
 
   end
 
@@ -55,6 +55,8 @@ class CartsController < ApplicationController
   def valid
     # Amount in cents
     @amout = 500
+    @cart = current_user.cart.items
+
 
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
@@ -69,6 +71,8 @@ class CartsController < ApplicationController
     )
 
     OrderMailer.with(user: current_user).order_email.deliver_now
+    @cart.destroy_all
+
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
