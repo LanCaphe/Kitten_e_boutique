@@ -78,3 +78,6 @@ end
 
 #Faker for create random items, users ect...
 gem 'faker', '~> 1.6', '>= 1.6.6'
+
+#Connected to mailer
+gem 'mailjet'
