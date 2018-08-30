@@ -46,5 +46,6 @@ end
 User.create(
   username: "tibo",
   email: "tibo@lol.com",
-  password: "qwerty"
+  password: "qwerty",
+  admin: true
 )
