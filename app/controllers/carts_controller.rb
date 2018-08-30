@@ -18,7 +18,7 @@ class CartsController < ApplicationController
     @show_cart = []
     @cart.each do |item|
       if @show_cart.select{|cart_item| cart_item[:id] == item["id"]}.count > 0
-        @show_cart = @show_cart.map do |cart_item| 
+        @show_cart = @show_cart.map do |cart_item|
           if cart_item[:id] == item["id"]
             cart_item[:qty] += 1
           end
@@ -80,6 +80,7 @@ class CartsController < ApplicationController
     # Amount in cents
     @amout = 500
     @cart = current_user.cart.items
+    @user = current_user
 
 
     customer = Stripe::Customer.create(
@@ -94,7 +95,13 @@ class CartsController < ApplicationController
       :currency    => 'usd'
     )
 
-    OrderMailer.with(user: current_user).order_email.deliver_now
+    order = Order.create(
+      user_id: current_user.id,
+    )
+    order.items.push(@cart)
+
+    OrderMailer.with(user: @user).order_email.deliver_now
+
     @cart.destroy_all
 
 
