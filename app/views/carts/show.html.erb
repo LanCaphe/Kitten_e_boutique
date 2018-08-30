@@ -1,29 +1,53 @@
 <h1>Carts#show</h1>
 <p>Find me in app/views/carts/show.html.erb</p>
 
+
+<div class="wrap cf">
+  <div class="heading cf">
+    <h1>My Cart</h1>
+    <a href="/" class="continue">Continue Shopping</a>
+  </div>
 <% if @cart.length > 0 %>
-<table>
-<thead>
-<tr>
-  <th>Title</th>
-  <th>Price</th>
-</tr>
-</thead>
-<tbody>
-<% @cart.each do |item| %>
-<% @sum_items = @sum_items + item["price"].to_f %>
-  <tr>
-    <td><%= item["title"] %></td>
-    <td><%= item["price"] %></td>
-    <td><%# link_to 'delete item', delete_item_url(item["id"]), remote: true %></td>
-    <td><%= link_to 'delete item', delete_item_url(item["id"]) %></td>
-  </tr>
-<% end %>
-</tbody>
-</table>
+  <div class="cart">
+    <ul class="cartWrap">
+    <% @cart.each do |item| %>
+      <% @sum_items = @sum_items + item["price"].to_f %>
+      <li class="items odd">
 
+        <div class="infoWrap">
+          <div class="cartSection">
+            <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg" />
+            <p class="itemNumber">#<%=item["id"]%></p>
+            <h3><%= item["title"] %></h3>
+
+            <p><%= item["price"] %></p>
+            <% if false %>
+              <p> <input type="text" class="qty" placeholder="3" /> x <%= item["price"] %></p>
+            <% end %>
+
+            <p class="stockStatus"> In Stock</p>
+          </div>
+
+          <div class="prodTotal cartSection">
+            <p>$15.00</p>
+          </div>
+          <div class="cartSection removeWrap">
+            <%= link_to 'x', delete_item_url(item["id"]), class: 'remove' %>
+            <%# link_to 'delete item', delete_item_url(item["id"]), remote: true %>
+          </div>
+        </div>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+
+
+
+<div class="subtotal cf">
+    <ul>
+      <li class="totalRow final"><span class="label">Total</span><span class="value">$<%=@sum_items%></span></li>
 <% if user_signed_in? %>
-
+ <li class="totalRow">
   <%= form_tag valid_cart_path do %>
     <article>
       <% if flash[:error].present? %>
@@ -31,9 +55,6 @@
           <p><%= flash[:error] %></p>
         </div>
       <% end %>
-      <label class="amount">
-        <span>Amount: $<%= @sum_items %></span>
-      </label>
     </article>
 
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
@@ -42,13 +63,21 @@
             data-amount="<%= @sum_items * 100%>"
             data-locale="auto"></script>
   <% end %>
+  </li>
 
   <% else %>
-    <p>
-      <%= link_to 'Please, be login for pay', new_user_session_path %>
-    </p>
+      <li class="totalRow">
+      <%= link_to 'Please login to checkout', new_user_session_path, class: 'btn continue' %>
+      </li>
   <% end %>
 
 <% else %>
 Votre panier est vide
 <% end %>
+
+
+
+  
+    </ul>
+  </div>
+</div>
