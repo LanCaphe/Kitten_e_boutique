@@ -1,10 +1,10 @@
 <header id="js-header" class="smaller">
       <div class="container clearfix">
           <h1 id="logo">
-            <%= link_to 'Home', '/' %>
+            <%= link_to 'kittens', '/' %>
           </h1>
           <nav>
-              
+
               <%= link_to image_tag('shopping-cart.png') +  "    Cart(" + cart_content.count.to_s + ")" , show_cart_url %>
               <% if user_signed_in? %>
                 <%= link_to 'Profile', '/user/profil' %>
