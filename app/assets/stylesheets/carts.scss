@@ -3,6 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,400italic|Montserrat:400,700);
+@import "variables/*";
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -91,7 +93,6 @@ img {
   max-width: 960px;
   margin: 0 auto;
   padding: 5% 0;
-  margin-bottom: 5em;
 }
 
 .projTitle {
@@ -128,16 +129,16 @@ img {
   font-size: .75em;
   padding: 1em;
   color: #fff;
-  background: #82ca9c;
+  background: $blue;
   font-weight: bold;
-  border-radius: 50px;
+  border-radius: 5px;
   float: right;
   text-align: right;
-  -webkit-transition: all 0.25s linear;
-  -moz-transition: all 0.25s linear;
-  -ms-transition: all 0.25s linear;
-  -o-transition: all 0.25s linear;
-  transition: all 0.25s linear;
+  -webkit-transition: all 0.15s linear;
+  -moz-transition: all 0.15s linear;
+  -ms-transition: all 0.15s linear;
+  -o-transition: all 0.15s linear;
+  transition: all 0.15fs linear;
 }
 .heading a.continue:after {
   content: "\276f";
@@ -151,7 +152,7 @@ img {
   transition: all 0.15s linear;
 }
 .heading a.continue:hover, .heading a.continue:focus, .heading a.continue:active {
-  background: #f69679;
+  background: $orange;
 }
 .heading a.continue:hover:after, .heading a.continue:focus:after, .heading a.continue:active:after {
   right: -10px;
@@ -271,20 +272,21 @@ a.remove {
   font-family: "Montserrat", sans-serif;
   color: #ffffff;
   font-weight: bold;
-  background: #e0e0e0;
+  background: $dark-blue;
   padding: .5em;
   font-size: .75em;
   display: inline-block;
   border-radius: 100%;
   line-height: .85;
-  -webkit-transition: all 0.25s linear;
-  -moz-transition: all 0.25s linear;
-  -ms-transition: all 0.25s linear;
-  -o-transition: all 0.25s linear;
-  transition: all 0.25s linear;
+  -webkit-transition: all 0.15s linear;
+  -moz-transition: all 0.15s linear;
+  -ms-transition: all 0.15s linear;
+  -o-transition: all 0.15s linear;
+  transition: all 0.15 linear;
 }
 a.remove:hover {
-  background: #f30;
+  background: $orange;
+  color: white
 }
 
 .promoCode {
@@ -327,20 +329,19 @@ a.remove:hover {
 .btn:link, .btn:visited {
   text-decoration: none;
   font-family: "Montserrat", sans-serif;
-  letter-spacing: -.015em;
   font-size: 1em;
   padding: 1em 3em;
   color: #fff;
-  background: #82ca9c;
+  background: $blue;
   font-weight: bold;
-  border-radius: 50px;
+  border-radius: 5px;
   float: right;
   text-align: right;
-  -webkit-transition: all 0.25s linear;
-  -moz-transition: all 0.25s linear;
-  -ms-transition: all 0.25s linear;
-  -o-transition: all 0.25s linear;
-  transition: all 0.25s linear;
+  -webkit-transition: all 0.15s linear;
+  -moz-transition: all 0.15s linear;
+  -ms-transition: all 0.15s linear;
+  -o-transition: all 0.15s linear;
+  transition: all 0.15s linear;
 }
 .btn:after {
   content: "\276f";

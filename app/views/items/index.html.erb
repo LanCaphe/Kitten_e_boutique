@@ -33,7 +33,7 @@
                                 <span class="item__desc"><%= item.title %></span>
                             </div>
                             <%= image_tag item.image_url %><br/>
-                            <span class="item__price"><%= item.price %>$</span>
+                            <span class="item__price">$<%= item.price %></span>
                         </div>
                         <ul class="list-inline shop__list" style="float-none">
                             <li class="list-inline-item shop__item"><%= link_to 'See item', '/items/show/' + item.id.to_s, :class => "shop__btn shop__btn__show" %></li>
