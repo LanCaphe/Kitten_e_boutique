@@ -1,6 +1,10 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.all
+    if params[:category]
+      @items = Category.find_by(name: params[:category]).items
+    else
+      @items = Item.all
+    end
   end
 
   def show

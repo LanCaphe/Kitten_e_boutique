@@ -1,6 +1,18 @@
 <div class="pickup-line">
     <h2>Checkout our best kittens</h2>
 </div>
+<div>
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <% Category.all.each do |category| %>
+            <label class="<%= category.name == params[:category]? "btn btn-outline-primary active" : "btn btn-outline-primary" %>">
+                <%= link_to index_category_url(category.name) do %>
+                    <input type="radio" name="options" id="option1" autocomplete="off">
+                    <%= category.name %>
+                <% end %>
+            </label>
+        <% end %>
+        </div>
+</div>
 <div class="row">
     <% @items.each do |item| %>
     <div class="col-12 col-sm-6 col-md-4">
