@@ -5,6 +5,9 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -12,8 +15,12 @@
   <body>
   <%= render 'components/header' %>
   <%- flash.each do |name, msg| -%>
-    <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+    <%= content_tag :div, msg, :class => "alert alert-success" if msg.is_a?(String) %>
   <%- end -%>
-    <%= yield %>
+  <section class = "items_index__wrapper">
+    <div class="container">
+      <%= yield %>
+    </div>
+  </section>
   </body>
 </html>

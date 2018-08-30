@@ -11,28 +11,24 @@
   <div class="cart">
     <ul class="cartWrap">
     <% @cart.each do |item| %>
-      <% @sum_items = @sum_items + item["price"].to_f %>
       <li class="items odd">
 
         <div class="infoWrap">
           <div class="cartSection">
-            <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg" />
-            <p class="itemNumber">#<%=item["id"]%></p>
-            <h3><%= item["title"] %></h3>
+            <%= image_tag item[:image_url], class: "itemImg"%>
+            <p class="itemNumber">#<%=item[:id]%></p>
+            <h3><%= item[:title] %></h3>
 
-            <p><%= item["price"] %></p>
-            <% if false %>
-              <p> <input type="text" class="qty" placeholder="3" /> x <%= item["price"] %></p>
-            <% end %>
+              <p> <%= item[:qty] %> x $<%= item[:price] %></p>
 
             <p class="stockStatus"> In Stock</p>
           </div>
 
           <div class="prodTotal cartSection">
-            <p>$15.00</p>
+            <p>$<%= item[:price] * item[:qty] %></p>
           </div>
           <div class="cartSection removeWrap">
-            <%= link_to 'x', delete_item_url(item["id"]), class: 'remove' %>
+            <%= link_to 'x', delete_item_url(item[:id]), class: 'remove' %>
             <%# link_to 'delete item', delete_item_url(item["id"]), remote: true %>
           </div>
         </div>
@@ -75,9 +71,7 @@
 Votre panier est vide
 <% end %>
 
-
-
-  
     </ul>
   </div>
 </div>
+

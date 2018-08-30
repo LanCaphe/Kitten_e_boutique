@@ -11,7 +11,31 @@ class CartsController < ApplicationController
     end
 
     @sum_items = 0
+    @cart.each do |item|
+      @sum_items += item["price"].to_f
+    end
 
+    @show_cart = []
+    @cart.each do |item|
+      if @show_cart.select{|cart_item| cart_item[:id] == item["id"]}.count > 0
+        @show_cart = @show_cart.map do |cart_item|
+          if cart_item[:id] == item["id"]
+            cart_item[:qty] += 1
+          end
+          cart_item
+        end
+      else
+        @show_cart.push({
+          id: item["id"],
+          title: item["title"],
+          price: item["price"],
+          image_url: item["image_url"],
+          qty: 1
+        })
+      end
+      p @show_cart
+    end
+    @cart = @show_cart
   end
 
   def add_item
@@ -70,7 +94,12 @@ class CartsController < ApplicationController
       :currency    => 'usd'
     )
 
-    OrderMailer.with(user: current_user).order_email.deliver_now
+    order = Order.create(
+      user_id: current_user.id,
+    )
+    order.items.push(@cart)
+
+
     @cart.destroy_all
 
 

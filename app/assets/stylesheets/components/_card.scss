@@ -1,0 +1,71 @@
+@import "../variables/*";
+.items__card {
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.shop__image {
+    position: relative;
+    transition: 0.9s ease-in-out !important;
+    border: 2px solid $dark-blue;
+    margin: 10px 0;
+    background-color: white;
+    overflow: hidden;
+}
+
+.shop__image img {
+    width: 100%;
+    position: center;
+    margin-bottom: 15px;
+}
+
+.shop__image > .item__desc {
+    transition: all 0.2s ease-in-out
+}
+
+.shop__image > img {
+    transition: all 0.2s ease-in-out
+}
+
+.shop__image:hover > .item__desc {
+    bottom: 0;
+    left: 0
+}
+
+.shop__image:hover > img {
+    opacity: 0.5;
+}
+
+.item__title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    border-bottom: 2px dotted $dark-blue;
+    border-right: 2px dotted $dark-blue;
+    padding: 5px;
+    color: $dark-blue;
+}
+
+.item__desc__over {
+    position: absolute;
+    background: rgba(106, 36, 250, 0.3);
+    top: 10px;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    text-align: justify;
+    opacity: 0;
+}
+
+.item__desc {
+    position: absolute;
+    bottom: -50%;
+    padding: 5px;
+}
+
+.item__price {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+}

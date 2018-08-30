@@ -13,3 +13,44 @@
  *= require_tree .
  *= require_self
  */
+
+ @import "variables/*";
+ 
+ @import "bootstrap";
+ @import "components/*";
+ 
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+/* LINKS */
+
+a {
+    font-family: 'Raleway';
+    text-decoration: none;
+    color: inherit
+}
+
+a:hover {
+    text-decoration: none
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    z-index: 2 !important
+}
+body, html {
+    height: 100%;
+}
+
+section {
+    height: 100%;
+}
+
+.alert {
+    margin-bottom: 0;
+}
