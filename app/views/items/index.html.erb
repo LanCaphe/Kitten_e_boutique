@@ -1,16 +1,26 @@
-<section class = "items-wrapper">
+<section class = "items_index__wrapper">
     <div class = "container">
-        <h2>Une liste de nos marchandises, achetez c'est pas cher</h2>
-        <ul class="items__list">
-            <% @items.each do |item| %>
-                <li>
-                    <%= item.title %><br/>
-                    <%= item.description %><br/>
-                    <%= item.price %><br/>
-                    <%= image_tag item.image_url %><br/>
-                    <%= link_to 'see item', '/items/show/' + item.id.to_s %>
-                </li>
-            <% end %>
-        </ul>
+        <div class="pickup-line">
+        <h2>Checkout our best kittens</h2>
+        </div>
+        <div class="row">
+                    <% @items.each do |item| %>
+                        <div class="col-12 col-sm-6 col-md-4">
+                            <div class="items__card">
+                                <div class="shop__image">
+                                    <%= image_tag item.image_url %><br/>
+                                    <span class="item__title"><strong><%= item.title %></strong></span>
+                                    <span class="item__desc"><%= item.description %></span>
+                                    <span class="item__price"><%= item.price %>$</span>
+                                </div>
+                                <ul class="list-inline pagination-center" style="float-none">
+                                    <li class="list-inline-item"><%= link_to 'See item', '/items/show/' + item.id.to_s, :class => "shop__btn shop__btn__show" %></li>
+                                    <li class="list-inline-item"><%= link_to 'Add to cart', '/items/show/' + item.id.to_s, :class => "shop__btn shop__btn__cart" %></li>
+                                </ul>
+                            </div>
+                        </div>
+                    <% end %>
+            </div>
+        </div>
     </div>
 </section>
