@@ -15,10 +15,11 @@
  */
 
  @import "variables/*";
- 
+
  @import "bootstrap";
  @import "components/*";
- 
+ @import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+
 
 * {
     margin: 0;
@@ -29,7 +30,7 @@
 /* LINKS */
 
 a {
-    font-family: 'Raleway';
+
     text-decoration: none;
     color: inherit
 }
