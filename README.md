@@ -1,18 +1,19 @@
-# E-boutique de chats ( nom
+# E-boutique de chats ( kittens)  
 
-## Composition de l'équipe
+##  Composition de l'équipe
 
 Projet final: plateforme de réservation de Glaglarelais
 Lea, Manon, Maxime, Edouard, Tibo
 Mentor : bfraikin
 
-##Le projet
+## Le projet
 
 Dans le cadre du suivi de notre formation The Hacking project, nous avons à réaliser le développement et la production d'une application Rails de vente de photos de chatons. Le projet est à réaliser en équipe avec un tableau trello comme support pour nous habituer à travailler en équipe afin de nosu préparer au projet final. 
 
-Lien du site en production: 
+Lien du site en production: [kittens]( https://kittenboutique.herokuapp.com/)
 
-##Les fonctionnalités du site
+
+## Les fonctionnalités du site
 
 Le site propose à la vente des photos de chatons.
  	Sur la page d'accueil du site, comprendra la liste des produits qui sont à vendre. Un visiteur peut cliquer sur l'un des produits pour l'afficher et avoir plus de détails sur le produit. Le visiteur devra s'inscrire pour ajouter ce produit à son panier.
@@ -30,7 +31,10 @@ Pour la database:
 * gem 'sqlite3', en développement
 * gem 'pg' en production
 * gem rspec pour une partie des tests. 
+* gem administrate pour créer l'admin dashboard
+ect...
 
+Ne pas oublier de faire ```bundle install --without production ``` et ```rails db:migrate``` puis ```rails db:seed``` pour le lancer en [local](http://localhost:3000/)
 
 
 
