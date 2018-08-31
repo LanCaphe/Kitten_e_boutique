@@ -11,6 +11,7 @@ Mentor : bfraikin
 Dans le cadre du suivi de notre formation The Hacking project, nous avons à réaliser le développement et la production d'une application Rails de vente de photos de chatons. Le projet est à réaliser en équipe avec un tableau trello comme support pour nous habituer à travailler en équipe afin de nosu préparer au projet final. 
 
 Lien du site en production: [kittens]( https://kittenboutique.herokuapp.com/)
+
 Backup: [kittens-lille](https://kittens-lille.herokuapp.com/)
 
 
