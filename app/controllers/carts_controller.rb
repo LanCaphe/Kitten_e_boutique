@@ -103,7 +103,7 @@ class CartsController < ApplicationController
     begin
       OrderMailer.with(user: @user).order_email.deliver_now
     rescue StandardError => e
-      redirect_to valid_cart_path
+      p e.message
     end
 
     @cart.destroy_all
