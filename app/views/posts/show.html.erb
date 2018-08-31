@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Thank you for your donation!</strong>
+  <%= @post.title %>
+
+  <% if @post.image.attached? %>
+<!-- @post.image.present? will always return true, use attached? to check presence -->
+    <p>
+      <strong>Image:</strong>
+      <br>
+      <%= image_tag @post.image %>
+    </p>
+  <% end %>
+</p>
