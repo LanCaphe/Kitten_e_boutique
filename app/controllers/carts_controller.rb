@@ -99,8 +99,12 @@ class CartsController < ApplicationController
       user_id: current_user.id,
     )
     order.items.push(@cart)
-
-    OrderMailer.with(user: @user).order_email.deliver_now
+  
+    begin
+      OrderMailer.with(user: @user).order_email.deliver_now
+    rescue StandardError => e
+      redirect_to valid_cart_path
+    end
 
     @cart.destroy_all
 
